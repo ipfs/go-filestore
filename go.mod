@@ -3,6 +3,13 @@ module github.com/ipfs/go-filestore
 go 1.12
 
 require (
-	github.com/ipfs/go-ipfs-posinfo v0.0.1 // indirect
-	github.com/ipfs/go-merkledag v0.2.0 // indirect
+	github.com/gogo/protobuf v1.2.1
+	github.com/ipfs/go-block-format v0.0.2
+	github.com/ipfs/go-cid v0.0.2
+	github.com/ipfs/go-datastore v0.0.5
+	github.com/ipfs/go-ipfs-blockstore v0.0.1
+	github.com/ipfs/go-ipfs-ds-help v0.0.1
+	github.com/ipfs/go-ipfs-posinfo v0.0.1
+	github.com/ipfs/go-log v0.0.1
+	github.com/ipfs/go-merkledag v0.2.0
 )
