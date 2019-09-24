@@ -11,5 +11,5 @@ require (
 	github.com/ipfs/go-ipfs-ds-help v0.0.1
 	github.com/ipfs/go-ipfs-posinfo v0.0.1
 	github.com/ipfs/go-log v0.0.1
-	github.com/ipfs/go-merkledag v0.1.0
+	github.com/ipfs/go-merkledag v0.2.3
 )
