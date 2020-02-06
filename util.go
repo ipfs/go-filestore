@@ -209,10 +209,10 @@ func listAllFileOrder(fs *Filestore, verify bool) (func() *ListRes, error) {
 		i++
 		// attempt to convert the datastore key to a Multihash,
 		// store the error but don't use it yet
-		cid, keyErr := dshelp.DsKeyToMultihash(ds.RawKey(v.dsKey))
+		mhash, keyErr := dshelp.DsKeyToMultihash(ds.RawKey(v.dsKey))
 		// first if they listRes already had an error return that error
 		if v.err != nil {
-			return mkListRes(cid, nil, v.err)
+			return mkListRes(mhash, nil, v.err)
 		}
 		// now reconstruct the DataObj
 		dobj := pb.DataObj{
@@ -223,14 +223,14 @@ func listAllFileOrder(fs *Filestore, verify bool) (func() *ListRes, error) {
 		// now if we could not convert the datastore key return that
 		// error
 		if keyErr != nil {
-			return mkListRes(cid, &dobj, keyErr)
+			return mkListRes(mhash, &dobj, keyErr)
 		}
 		// finally verify the dataobj if requested
 		var err error
 		if verify {
-			_, err = fs.fm.readDataObj(cid, &dobj)
+			_, err = fs.fm.readDataObj(mhash, &dobj)
 		}
-		return mkListRes(cid, &dobj, err)
+		return mkListRes(mhash, &dobj, err)
 	}, nil
 }
 
