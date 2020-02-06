@@ -61,7 +61,7 @@ func (s Status) Format() string {
 type ListRes struct {
 	Status   Status
 	ErrorMsg string
-	Key      mh.Multihash
+	Key      cid.Cid
 	FilePath string
 	Offset   uint64
 	Size     uint64
@@ -73,12 +73,12 @@ func (r *ListRes) FormatLong(enc func(cid.Cid) string) string {
 		enc = (cid.Cid).String
 	}
 	switch {
-	case r.Key == nil:
+	case !r.Key.Defined():
 		return "<corrupt key>"
 	case r.FilePath == "":
 		return r.Key.String()
 	default:
-		return fmt.Sprintf("%-50s %6d %s %d", enc(cid.NewCidV1(cid.Raw, r.Key)), r.Size, r.FilePath, r.Offset)
+		return fmt.Sprintf("%-50s %6d %s %d", enc(r.Key), r.Size, r.FilePath, r.Offset)
 	}
 }
 
@@ -269,18 +269,21 @@ func mkListRes(m mh.Multihash, d *pb.DataObj, err error) *ListRes {
 		}
 		errorMsg = err.Error()
 	}
+
+	c := cid.NewCidV1(cid.Raw, m)
+
 	if d == nil {
 		return &ListRes{
 			Status:   status,
 			ErrorMsg: errorMsg,
-			Key:      m,
+			Key:      c,
 		}
 	}
 
 	return &ListRes{
 		Status:   status,
 		ErrorMsg: errorMsg,
-		Key:      m,
+		Key:      c,
 		FilePath: d.FilePath,
 		Size:     d.Size_,
 		Offset:   d.Offset,
