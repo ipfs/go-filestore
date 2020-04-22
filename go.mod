@@ -10,7 +10,7 @@ require (
 	github.com/ipfs/go-ipfs-blockstore v1.0.0
 	github.com/ipfs/go-ipfs-ds-help v1.0.0
 	github.com/ipfs/go-ipfs-posinfo v0.0.1
-	github.com/ipfs/go-log v1.0.2
+	github.com/ipfs/go-log v1.0.4
 	github.com/ipfs/go-merkledag v0.3.1
 	github.com/multiformats/go-multihash v0.0.13
 )
