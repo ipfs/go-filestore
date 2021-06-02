@@ -1,6 +1,6 @@
 module github.com/ipfs/go-filestore
 
-go 1.12
+go 1.15
 
 require (
 	github.com/gogo/protobuf v1.3.1
