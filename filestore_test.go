@@ -45,6 +45,7 @@ func makeFile(dir string, data []byte) (string, error) {
 }
 
 func TestBasicFilestore(t *testing.T) {
+	ctx := context.Background()
 	dir, fs := newTestFilestore(t)
 
 	buf := make([]byte, 1000)
@@ -65,7 +66,7 @@ func TestBasicFilestore(t *testing.T) {
 			Node: dag.NewRawNode(buf[i*10 : (i+1)*10]),
 		}
 
-		err := fs.Put(n)
+		err := fs.Put(ctx, n)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -73,7 +74,7 @@ func TestBasicFilestore(t *testing.T) {
 	}
 
 	for i, c := range cids {
-		blk, err := fs.Get(c)
+		blk, err := fs.Get(ctx, c)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -105,6 +106,7 @@ func TestBasicFilestore(t *testing.T) {
 }
 
 func randomFileAdd(t *testing.T, fs *Filestore, dir string, size int) (string, []cid.Cid) {
+	ctx := context.Background()
 	buf := make([]byte, size)
 	rand.Read(buf)
 
@@ -122,7 +124,7 @@ func randomFileAdd(t *testing.T, fs *Filestore, dir string, size int) (string, [
 			},
 			Node: dag.NewRawNode(buf[i*10 : (i+1)*10]),
 		}
-		err := fs.Put(n)
+		err := fs.Put(ctx, n)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -133,11 +135,12 @@ func randomFileAdd(t *testing.T, fs *Filestore, dir string, size int) (string, [
 }
 
 func TestDeletes(t *testing.T) {
+	ctx := context.Background()
 	dir, fs := newTestFilestore(t)
 	_, cids := randomFileAdd(t, fs, dir, 100)
 	todelete := cids[:4]
 	for _, c := range todelete {
-		err := fs.DeleteBlock(c)
+		err := fs.DeleteBlock(ctx, c)
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -145,7 +148,7 @@ func TestDeletes(t *testing.T) {
 
 	deleted := make(map[string]bool)
 	for _, c := range todelete {
-		_, err := fs.Get(c)
+		_, err := fs.Get(ctx, c)
 		if err != blockstore.ErrNotFound {
 			t.Fatal("expected blockstore not found error")
 		}
