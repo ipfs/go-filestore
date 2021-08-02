@@ -12,7 +12,7 @@ import (
 	"errors"
 
 	blocks "github.com/ipfs/go-block-format"
-	cid "github.com/ipfs/go-cid"
+	"github.com/ipfs/go-cid"
 	dsq "github.com/ipfs/go-datastore/query"
 	blockstore "github.com/ipfs/go-ipfs-blockstore"
 	posinfo "github.com/ipfs/go-ipfs-posinfo"
