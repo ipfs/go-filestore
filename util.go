@@ -17,16 +17,24 @@ import (
 
 // Status is used to identify the state of the block data referenced
 // by a FilestoreNode. Among other places, it is used by CorruptReferenceError.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.Status
 type Status int32
 
 // These are the supported Status codes.
 const (
-	StatusOk           Status = 0
-	StatusFileError    Status = 10 // Backing File Error
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusOk
+	StatusOk Status = 0
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusFileError
+	StatusFileError Status = 10 // Backing File Error
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusFileNotFound
 	StatusFileNotFound Status = 11 // Backing File Not Found
-	StatusFileChanged  Status = 12 // Contents of the file changed
-	StatusOtherError   Status = 20 // Internal Error, likely corrupt entry
-	StatusKeyNotFound  Status = 30
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusFileChanged
+	StatusFileChanged Status = 12 // Contents of the file changed
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusOtherError
+	StatusOtherError Status = 20 // Internal Error, likely corrupt entry
+	// Deprecated: use github.com/ipfs/boxo/filestore.StatusKeyNotFound
+	StatusKeyNotFound Status = 30
 )
 
 // String provides a human-readable representation for Status codes.
@@ -59,6 +67,8 @@ func (s Status) Format() string {
 // allows to obtain and verify blocks stored by the FileManager
 // of a Filestore. It includes information about the referenced
 // block.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.ListRes
 type ListRes struct {
 	Status   Status
 	ErrorMsg string
@@ -87,6 +97,8 @@ func (r *ListRes) FormatLong(enc func(cid.Cid) string) string {
 // of the given Filestore and returns a ListRes object with the information.
 // List does not verify that the reference is valid or whether the
 // raw data is accesible. See Verify().
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.List
 func List(ctx context.Context, fs *Filestore, key cid.Cid) *ListRes {
 	return list(ctx, fs, false, key.Hash())
 }
@@ -95,6 +107,8 @@ func List(ctx context.Context, fs *Filestore, key cid.Cid) *ListRes {
 // one by one each block in the Filestore's FileManager.
 // ListAll does not verify that the references are valid or whether
 // the raw data is accessible. See VerifyAll().
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.ListAll
 func ListAll(ctx context.Context, fs *Filestore, fileOrder bool) (func(context.Context) *ListRes, error) {
 	if fileOrder {
 		return listAllFileOrder(ctx, fs, false)
@@ -106,6 +120,8 @@ func ListAll(ctx context.Context, fs *Filestore, fileOrder bool) (func(context.C
 // of the given Filestore and returns a ListRes object with the information.
 // Verify makes sure that the reference is valid and the block data can be
 // read.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.Verify
 func Verify(ctx context.Context, fs *Filestore, key cid.Cid) *ListRes {
 	return list(ctx, fs, true, key.Hash())
 }
@@ -114,6 +130,8 @@ func Verify(ctx context.Context, fs *Filestore, key cid.Cid) *ListRes {
 // returns one by one each block in the Filestore's FileManager.
 // VerifyAll checks that the reference is valid and that the block data
 // can be read.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.VerifyAll
 func VerifyAll(ctx context.Context, fs *Filestore, fileOrder bool) (func(context.Context) *ListRes, error) {
 	if fileOrder {
 		return listAllFileOrder(ctx, fs, true)

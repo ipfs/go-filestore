@@ -22,12 +22,17 @@ import (
 
 var logger = logging.Logger("filestore")
 
+// Deprecated: use github.com/ipfs/boxo/filestore.ErrFilestoreNotEnabled
 var ErrFilestoreNotEnabled = errors.New("filestore is not enabled, see https://git.io/vNItf")
+
+// Deprecated: use github.com/ipfs/boxo/filestore.ErrUrlstoreNotEnabled
 var ErrUrlstoreNotEnabled = errors.New("urlstore is not enabled")
 
 // Filestore implements a Blockstore by combining a standard Blockstore
 // to store regular blocks and a special Blockstore called
 // FileManager to store blocks which data exists in an external file.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.Filestore
 type Filestore struct {
 	fm *FileManager
 	bs blockstore.Blockstore
@@ -44,6 +49,8 @@ func (f *Filestore) MainBlockstore() blockstore.Blockstore {
 }
 
 // NewFilestore creates one using the given Blockstore and FileManager.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.NewFilestore
 func NewFilestore(bs blockstore.Blockstore, fm *FileManager) *Filestore {
 	return &Filestore{fm, bs}
 }

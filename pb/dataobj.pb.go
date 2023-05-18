@@ -23,6 +23,7 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.GoGoProtoPackageIsVersion3 // please upgrade the proto package
 
+// Deprecated: use github.com/ipfs/boxo/filestore/pb.DataObj
 type DataObj struct {
 	FilePath string `protobuf:"bytes,1,opt,name=FilePath" json:"FilePath"`
 	Offset   uint64 `protobuf:"varint,2,opt,name=Offset" json:"Offset"`
@@ -370,7 +371,10 @@ func skipDataobj(dAtA []byte) (n int, err error) {
 }
 
 var (
-	ErrInvalidLengthDataobj        = fmt.Errorf("proto: negative length found during unmarshaling")
-	ErrIntOverflowDataobj          = fmt.Errorf("proto: integer overflow")
+	// Deprecated: use github.com/ipfs/boxo/filestore/pb.ErrInvalidLengthDataobj
+	ErrInvalidLengthDataobj = fmt.Errorf("proto: negative length found during unmarshaling")
+	// Deprecated: use github.com/ipfs/boxo/filestore/pb.ErrIntOverflowDataobj
+	ErrIntOverflowDataobj = fmt.Errorf("proto: integer overflow")
+	// Deprecated: use github.com/ipfs/boxo/filestore/pb.ErrUnexpectedEndOfGroupDataobj
 	ErrUnexpectedEndOfGroupDataobj = fmt.Errorf("proto: unexpected end of group")
 )
