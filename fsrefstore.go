@@ -23,12 +23,16 @@ import (
 )
 
 // FilestorePrefix identifies the key prefix for FileManager blocks.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.FilestorePrefix
 var FilestorePrefix = ds.NewKey("filestore")
 
 // FileManager is a blockstore implementation which stores special
 // blocks FilestoreNode type. These nodes only contain a reference
 // to the actual location of the block data in the filesystem
 // (a path and an offset).
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.FileManager
 type FileManager struct {
 	AllowFiles bool
 	AllowUrls  bool
@@ -40,6 +44,8 @@ type FileManager struct {
 // It is used to indicate that the block contents pointed
 // by the referencing blocks cannot be retrieved (i.e. the
 // file is not found, or the data changed as it was being read).
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.CorruptReferenceError
 type CorruptReferenceError struct {
 	Code Status
 	Err  error
@@ -54,6 +60,8 @@ func (c CorruptReferenceError) Error() string {
 // NewFileManager initializes a new file manager with the given
 // datastore and root. All FilestoreNodes paths are relative to the
 // root path given here, which is prepended for any operations.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.NewFileManager
 func NewFileManager(ds ds.Batching, root string) *FileManager {
 	return &FileManager{ds: dsns.Wrap(ds, FilestorePrefix), root: root}
 }
@@ -333,6 +341,8 @@ func (f *FileManager) PutMany(ctx context.Context, bs []*posinfo.FilestoreNode) 
 // IsURL returns true if the string represents a valid URL that the
 // urlstore can handle.  More specifically it returns true if a string
 // begins with 'http://' or 'https://'.
+//
+// Deprecated: use github.com/ipfs/boxo/filestore.IsURL
 func IsURL(str string) bool {
 	return (len(str) > 7 && str[0] == 'h' && str[1] == 't' && str[2] == 't' && str[3] == 'p') &&
 		((len(str) > 8 && str[4] == 's' && str[5] == ':' && str[6] == '/' && str[7] == '/') ||
