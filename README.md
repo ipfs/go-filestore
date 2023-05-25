@@ -19,18 +19,11 @@
 ## Table of Contents
 
 - [Documentation](#documentation)
-- [Contribute](#contribute)
 - [License](#license)
 
 ## Documentation
 
 https://godoc.org/github.com/ipfs/go-filestore
-
-## Contribute
-
-Feel free to join in. All welcome. Open an [issue](https://github.com/ipfs/go-filestore/issues)!
-
-This repository falls under the IPFS [Code of Conduct](https://github.com/ipfs/community/blob/master/code-of-conduct.md).
 
 ### Want to hack on IPFS?
 
