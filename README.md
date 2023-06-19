@@ -1,35 +1,7 @@
-# go-filestore
+## ❗ This repository is no longer maintained.
 
-> a by-reference file-backed blockstore
+This repository is no longer maintained and the filestore implementation has been copied over to [`github.com/ipfs/boxo/filestore`](https://github.com/ipfs/boxo/tree/main/filestore).  
 
-[![](https://img.shields.io/badge/made%20by-Protocol%20Labs-blue.svg?style=flat-square)](https://protocol.ai)
-[![](https://img.shields.io/badge/project-IPFS-blue.svg?style=flat-square)](https://ipfs.io/)
-[![](https://img.shields.io/badge/freenode-%23ipfs-blue.svg?style=flat-square)](http://webchat.freenode.net/?channels=%23ipfs)
-[![standard-readme compliant](https://img.shields.io/badge/standard--readme-OK-green.svg?style=flat-square)](https://github.com/RichardLitt/standard-readme)
-[![GoDoc](https://godoc.org/github.com/ipfs/go-filestore?status.svg)](https://godoc.org/github.com/ipfs/go-filestore)
+In an effort to avoid noise and crippling in the Boxo repo from the weight of issues of the past, we are closing most issues and PRs in this repo.  Please feel free to open a new issue in Boxo (and reference this issue) if resolving this issue is still critical for unblocking or improving your usecase.
 
-## ❗ This repo is no longer maintained.
-👉 We highly recommend switching to the maintained version at https://github.com/ipfs/boxo/tree/main/filestore.
-🏎️ Good news!  There is [tooling and documentation](https://github.com/ipfs/boxo#migrating-to-boxo) to expedite a switch in your repo. 
-
-⚠️ If you continue using this repo, please note that security fixes will not be provided (unless someone steps in to maintain it).
-
-📚 Learn more, including how to take the maintainership mantle or ask questions, [here](https://github.com/ipfs/boxo/wiki/Copied-or-Migrated-Repos-FAQ).
-
-## Table of Contents
-
-- [Documentation](#documentation)
-- [License](#license)
-
-## Documentation
-
-https://godoc.org/github.com/ipfs/go-filestore
-
-### Want to hack on IPFS?
-
-[![](https://cdn.rawgit.com/jbenet/contribute-ipfs-gif/master/img/contribute.gif)](https://github.com/ipfs/community/blob/master/contributing.md)
-
-## License
-
-MIT
-
+You can learn more in the [FAQs for the Boxo repo copying/consolidation effort](https://github.com/ipfs/boxo/wiki/Copied-or-Migrated-Repos-FAQ).
